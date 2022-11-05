@@ -1,0 +1,82 @@
+[include]
+  path = "~/.dotfiles/gitconfig/profiles"
+  path = "~/.dotfiles/gitconfig/aliases"
+
+[github]
+  user = martylouis
+
+[apply]
+  whitespace = fix
+
+[core]
+  whitepsace = space-before-tab,-indent-with-non-tab,trailing-space
+  trustctime = false
+  precomposeunicode = false
+  editor = vi
+	excludesfile = "~/.dotfiles/.gitignore"
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[help]
+  autocorrect = 1
+
+[init]
+	defaultBranch = main
+
+[push]
+  default = matching
+
+[pull]
+	ff = only
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[diff]
+  renames = copies
+  indentHeuristic = true
+	tool = Kaleidoscope
+
+[diff "bin"]
+  textconv = hexdump -v -C
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+
+[merge]
+  log = true
+	tool = Kaleidoscope
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
+[mergetool]
+	prompt = false
