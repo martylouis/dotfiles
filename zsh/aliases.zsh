@@ -130,6 +130,14 @@ alias nrd='npm run dev'
 alias nrb='npm run build'
 alias nrs='npm start'
 
+# PNPM
+alias pn='pnpm'
+alias pni='pnpm i'
+alias pnd='pnpm dev'
+alias pnb='pnpm build'
+alias pns='pnpm start'
+alias pnr='pnpm run'
+
 # add-gitignore https://www.npmjs.com/package/add-gitignore
 alias gignore='add-gitignore'
 
