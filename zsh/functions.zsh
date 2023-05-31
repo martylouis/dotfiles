@@ -68,6 +68,16 @@ function vs() {
 	fi;
 }
 
+# `vsi` with no arguments opens the current directory in VS Code Insiders, otherwise
+# opens the given location
+function vsi() {
+    if [ $# -eq 0 ]; then
+        code-insiders .;
+    else
+        code-insiders "$@";
+    fi;
+}
+
 function vsr() {
 	code $(git rev-parse --show-toplevel);
 }
