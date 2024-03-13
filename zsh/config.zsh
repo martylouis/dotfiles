@@ -35,13 +35,8 @@ export PATH="/usr/local/sbin:$PATH"
 # source /usr/local/etc/profile.d/z.sh
 source $(brew --prefix)/etc/profile.d/z.sh
 
-# PHP, composer and mysql
-# export PATH="/usr/local/opt/php@7.4/bin:$PATH"
-# export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
-
-# export PATH="$PATH:$HOME/.composer/vendor/bin"
-
-# export PATH="${PATH}:/usr/local/opt/mysql@5.7/bin"
+# Add Composer's global bin to PATH
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 ## DBngin config
 # export PATH="$PATH:/Users/Shared/DBngin/mysql/5.7.23/bin"
