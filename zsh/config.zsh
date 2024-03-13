@@ -55,3 +55,10 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 
 # Add custom bin path
 export PATH="$HOME/Code/bin:$PATH"
+
+# Update FZF default comment to use git ignore files
+export FZF_DEFAULT_COMMAND='git ls-files || find .'
+
+# Cloudinary config (coastal states)
+# <API_KEY>:<API_SECRET>@<CLOUD_NAME>
+export CLOUDINARY_URL=cloudinary://136438265184379:F5wWzbvZTVXyJRMR8w9HbWx4O_Y@dnr4talib
