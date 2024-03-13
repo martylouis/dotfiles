@@ -105,3 +105,70 @@ function tre() {
 function addgitkeep() {
   find . -type d -empty -not -path "./.git/*" -exec touch {}/.gitkeep \;
 }
+
+# List all images on a website
+function list_images {
+    # Make sure a URL has been provided
+    if [ -z "$1" ]; then
+        echo "Usage: list_images <URL> [max_pages]"
+        return 1
+    fi
+
+    # Define a recursive function to visit each page and extract the image URLs
+    function scrape_page {
+        local url="$1"
+        local domain="$(echo "$url" | sed -E 's/https?:\/\/([^\/]+).*/\1/')"
+        local page="$(echo "$url" | sed -E 's/https?:\/\/[^\/]+(.*)/\1/' | tr -d '/')"
+        local html="$(echo "$page" | tr '/' '_').html"
+        local count="$2"
+        local max_pages="$3"
+
+        # Download the HTML source code of the page and display a progress indicator
+        curl -s "$url" | pv -s $(curl -s "$url" | wc -c) > "$html"
+
+        # Extract all image URLs from the HTML and write them to the CSV file
+        grep -o '<img[^>]*src="[^"]*"' "$html" | grep -o '".*"' | sed 's/"//g' | awk '{print $1}' | sed 's/^/"/;s/$/"/' >> images.csv
+
+        # Extract all links from the HTML and recursively scrape each one
+        grep -o '<a[^>]*href="[^"]*"' "$html" | grep -o '".*"' | sed 's/"//g' | while read link; do
+            if [[ "$link" == /* ]]; then
+                scrape_page "https://$domain$link" "$count" "$max_pages"
+            elif [[ "$link" == http*"$domain"* ]]; then
+                scrape_page "$link" "$count" "$max_pages"
+            elif [[ "$link" == http* ]]; then
+                :
+            else
+                scrape_page "https://$domain/$link" "$count" "$max_pages"
+            fi
+
+            # Increment the counter and exit the function if the maximum number of pages have been scraped
+            count=$(( count + 1 ))
+            if [ "$max_pages" -gt 0 ] && [ "$count" -eq "$max_pages" ]; then
+                exit
+            fi
+        done
+
+        # Remove the temporary HTML file
+        rm "$html"
+    }
+
+    # Create the CSV file and write the header row
+    echo "Image URL" > images.csv
+
+    # Scrape the website recursively, starting with the first page
+    if [ -z "$2" ]; then
+        scrape_page "$1" 0 0
+    else
+        scrape_page "$1" 0 "$2"
+    fi
+}
+
+# Run Raycast Git Commit Message command with the diff of the current branch
+function rc() {
+    g diff "$1" | pbcopy; open raycast://ai-commands/git-commit-message
+}
+
+# Search for a term in all YAML files in the CDH meta repository
+function fzf_literals() {
+    grep -r "$1" --include='*.yml' ~/Code/bethel/cdh-meta/apps | fzf --reverse
+}

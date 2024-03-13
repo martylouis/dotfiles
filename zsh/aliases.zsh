@@ -7,16 +7,19 @@ alias rm='trash'
 alias g="git"
 
 # Git Tower
-alias gt='gittower $(git rev-parse --show-toplevel)'
+alias tower='gittower .'
+alias gt='gittower .'
 
 # GitHub cli
 alias gho="gh repo view --web"
+alias ghi="gh issue create"
 
 # Path Shortcuts
 alias db="cd ~/Library/CloudStorage/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias df="cd ~/.dotfiles"
+alias dot="cd ~/.dotfiles"
+
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -27,13 +30,15 @@ alias egrep='egrep --color=auto'
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-# Get macOS Software Updates
-alias update='sudo softwareupdate -i -a;
+# Get all macOS Software Updates
+alias updateall='sudo softwareupdate -i -a;
   brew update;
   brew upgrade;
   brew cleanup;
   npm install npm -g;
-  npm update -g'
+  npm update -g;
+  pnpm install pnpm -g;
+  pnpm update -g;'
 
 alias updateosx='sudo softwareupdate -i -a'
 
@@ -46,8 +51,6 @@ alias updatedev='brew update;
 alias updategem='sudo gem update --system;
   sudo gem update;
   sudo gem cleanup'
-
-alias updateohmyzsh='git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
@@ -62,10 +65,10 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
 # Flush Directory Service cache
-alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+alias cleanupls="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -131,12 +134,26 @@ alias nrb='npm run build'
 alias nrs='npm start'
 
 # PNPM
-alias pn='pnpm'
+
 alias pni='pnpm i'
+alias pnid='pnpm i -D'
 alias pnd='pnpm dev'
 alias pnb='pnpm build'
 alias pns='pnpm start'
 alias pnr='pnpm run'
+alias pnu='pnpm uninstall'
+alias pnx='pnpm dlx'
+
+# Bun
+alias bi='bun install'
+alias bid='bun install -D'
+alias br='bun run'
+alias bu='bun update'
+alias brm='bun remove'
+alias bx='bunx'
+alias brd='bun run dev'
+alias brb='bun run build'
+alias brs='bun run start'
 
 # add-gitignore https://www.npmjs.com/package/add-gitignore
 alias gignore='add-gitignore'
@@ -170,3 +187,13 @@ alias ldot='ls -ld .*'
 alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
+
+# composer
+alias cmp='composer'
+alias cmpu='composer update' # update package
+alias cmpr='composer require' # install package
+alias cmpi='composer install'
+alias cmpd='composer dump-autoload'
+alias cmpda='composer dump-autoload -o'
+alias cmpc='composer clear-cache'
+alias cmps='composer self-update'
