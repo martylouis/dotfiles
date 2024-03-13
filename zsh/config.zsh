@@ -42,26 +42,11 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 # export PATH="$PATH:/Users/Shared/DBngin/mysql/5.7.23/bin"
 # export MYSQL_UNIX_PORT=/tmp/mysql_3306.sock
 
-
-## Node ##
-# n - node version control
-export N_PREFIX="$HOME/.n"
-export PATH="$N_PREFIX/bin:$PATH"
-
 ## NVM ##
-# export NVM_DIR=~/.nvm
-# source $(brew --prefix nvm)/nvm.sh
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-## Add local gems to $PATH
-# export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-
-# zsh-autosuggestions config
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
-# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 ## 1Password SSH config ##
 # Set the `SSH_AUTH_SOCK` environment variable
