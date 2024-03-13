@@ -16,6 +16,8 @@
   # `git difftool`
   dt = !"git difftool"
 
+  diffcopy = !git diff --staged | tr -d '\\n' | pbcopy
+
   # Pull in remote changes for the current repository and all its submodules
   p = !"git pull; git submodule foreach git pull origin master"
 
