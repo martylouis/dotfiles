@@ -165,8 +165,13 @@ function list_images {
 
 # Run Raycast Git Commit Message command with the diff of the current branch
 function rc() {
-    g diff "$1" | pbcopy; open raycast://ai-commands/git-commit-message
+    if [ "$1" = "--staged" ] || [ "$1" = "-s" ]; then
+        git diff --staged | pbcopy; open raycast://ai-commands/git-commit-message
+    else
+        git diff | pbcopy; open raycast://ai-commands/git-commit-message
+    fi
 }
+
 
 # Search for a term in all YAML files in the CDH meta repository
 function fzf_literals() {
