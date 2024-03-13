@@ -53,10 +53,5 @@ source $(brew --prefix nvm)/nvm.sh
 # https://developer.1password.com/docs/ssh/get-started
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
-# Set the `VOLTA_HOME` environment variable
-export VOLTA_HOME=$HOME/.volta
-# Add Volta’s bin directory to the path
-export PATH=$VOLTA_HOME/bin:$PATH
-
 # Add custom bin path
 export PATH="$HOME/Code/bin:$PATH"
