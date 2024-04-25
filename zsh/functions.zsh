@@ -164,7 +164,7 @@ function list_images {
 }
 
 # Run Raycast Git Commit Message command with the diff of the current branch
-function rc() {
+function gc() {
     if [ "$1" = "--staged" ] || [ "$1" = "-s" ]; then
         git diff --staged | pbcopy; open raycast://ai-commands/git-commit-message
     else
