@@ -14,6 +14,7 @@
   precomposeunicode = false
   editor = vi
 	excludesfile = "~/.dotfiles/.gitignore"
+  ignorecase = false
 
 [color]
   ui = auto
