@@ -164,13 +164,8 @@ function list_images {
 }
 
 # Run Raycast Git Commit Message command with the diff of the current branch
-function gcm() {
-    git add .;
-    git diff --staged | pbcopy;
-    open raycast://ai-commands/short-git-commit-message
-}
-
 function gca() {
+    git add .;
     git diff | pbcopy;
     open raycast://ai-commands/git-commit-message
 }
@@ -178,6 +173,11 @@ function gca() {
 function gcs() {
     git diff --staged | pbcopy;
     open raycast://ai-commands/git-commit-message
+}
+
+function gcm() {
+    git diff --staged | pbcopy;
+    open raycast://ai-commands/short-git-commit-message
 }
 
 
