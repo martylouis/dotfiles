@@ -62,3 +62,7 @@ export FZF_DEFAULT_COMMAND='git ls-files || find .'
 # Cloudinary config (coastal states)
 # <API_KEY>:<API_SECRET>@<CLOUD_NAME>
 export CLOUDINARY_URL=cloudinary://136438265184379:F5wWzbvZTVXyJRMR8w9HbWx4O_Y@dnr4talib
+
+# Pattern Mac Local Development
+# https://git.bethelservice.org/ux/pattern#mac-users---local-development
+export NODE_ICU_DATA=/usr/local/lib/node_modules/full-icu
