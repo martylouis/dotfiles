@@ -163,6 +163,72 @@ function list_images {
     fi
 }
 
+# Cleanup node_modules directories
+#
+# This function finds all top-level node_modules directories in the current directory
+# and asks for confirmation before deleting them. It also calculates the total size
+# of all node_modules directories before deletion and the freed space after deletion.
+# Usage: cleanup_node_modules
+cleanup_node_modules() {
+  echo "🔍 Finding top-level node_modules directories..."
+  echo "----------------------------------------"
+
+  # Initialize counter
+  count=0
+
+  # Find and store directories while showing them
+  # -prune prevents recursion into found node_modules directories
+  while IFS= read -r dir; do
+    if [ ! -z "$dir" ]; then
+      ((count++))
+      echo "📁 Found ($count): $dir"
+      dirs_array[$count]="$dir"
+    fi
+  done < <(find . -type d -name "node_modules" -not -path "*/node_modules/*")
+
+  if [ $count -eq 0 ]; then
+    echo "✨ No node_modules directories found."
+    return 0
+  fi
+
+  echo "----------------------------------------"
+  echo "📦 Found total of $count node_modules directories"
+
+  # Calculate total size before deletion (on macOS and Linux)
+  if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
+    total_size=0
+    echo "📊 Calculating sizes..."
+    echo "----------------------------------------"
+    for dir in "${dirs_array[@]}"; do
+      size=$(du -sh "$dir" | cut -f1)
+      echo "💾 $dir: $size"
+    done
+    echo "----------------------------------------"
+  fi
+
+  # Ask for confirmation
+  echo "🗑️  Do you want to remove all these directories? (y/N)"
+  read -r response
+
+  if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+    echo "🚮 Removing node_modules directories..."
+    for dir in "${dirs_array[@]}"; do
+      echo "🗑️  Removing: $dir"
+      rm -rf "$dir"
+    done
+    echo "✅ Cleanup complete!"
+
+    # Calculate freed space (on macOS and Linux)
+    if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
+      freed_space=$(du -sh .)
+      echo "💾 Current directory size: $freed_space"
+    fi
+  else
+    echo "❌ Operation cancelled"
+  fi
+}
+
+
 # Run Raycast Git Commit Message command with the diff of the current branch
 function gca() {
     git add .;
@@ -179,7 +245,6 @@ function gcm() {
     git diff --staged | pbcopy;
     open raycast://ai-commands/short-git-commit-message
 }
-
 
 
 # Search for a term in all YAML files in the CDH meta repository
