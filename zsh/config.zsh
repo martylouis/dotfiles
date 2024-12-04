@@ -65,4 +65,4 @@ export CLOUDINARY_URL=cloudinary://136438265184379:F5wWzbvZTVXyJRMR8w9HbWx4O_Y@d
 
 # Pattern Mac Local Development
 # https://git.bethelservice.org/ux/pattern#mac-users---local-development
-export NODE_ICU_DATA=/usr/local/lib/node_modules/full-icu
+export NODE_ICU_DATA=/Users/marty/.nvm/versions/node/v20.9.0/bin/full-icu
