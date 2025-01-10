@@ -16,7 +16,7 @@ alias ghi="gh issue create"
 
 # Path Shortcuts
 alias db="cd ~/Library/CloudStorage/Dropbox"
-alias dl="cd ~/Downloads"
+alias dl="cd '/Users/marty/Library/Mobile Documents/com~apple~CloudDocs/Downloads'"
 alias dt="cd ~/Desktop"
 alias dot="cd ~/.dotfiles"
 
