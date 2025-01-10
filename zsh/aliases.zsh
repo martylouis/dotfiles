@@ -31,26 +31,25 @@ alias egrep='egrep --color=auto'
 alias sudo='sudo '
 
 # Get all macOS Software Updates
-alias updateall='sudo softwareupdate -i -a;
-  brew update;
-  brew upgrade;
-  brew cleanup;
-  npm install npm -g;
-  npm update -g;
-  pnpm install pnpm -g;
-  pnpm update -g;'
+# Update macOS software
+alias update-macos='sudo softwareupdate -i -a'
 
-alias updateosx='sudo softwareupdate -i -a'
+# Update homebrew and its packages
+alias update-brew='brew update && brew upgrade && brew cleanup'
 
-alias updatedev='brew update;
-  brew upgrade;
-  brew cleanup;
-  npm install npm -g;
-  npm update -g;'
+# Update global package managers
+alias update-packages='npm update -g npm && \
+  pnpm install -g pnpm && pnpm update -g pnpm && \
+  bun upgrade'
 
-alias updategem='sudo gem update --system;
-  sudo gem update;
-  sudo gem cleanup'
+# Update everything
+alias update-sys='echo "🔄 Updating system..." && \
+  update-macos && \
+  echo "🍺 Updating Homebrew..." && \
+  update-brew && \
+  echo "📦 Updating package managers..." && \
+  update-packages && \
+  echo "✨ All updates complete!"'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
