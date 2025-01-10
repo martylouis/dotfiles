@@ -66,3 +66,9 @@ export CLOUDINARY_URL=cloudinary://136438265184379:F5wWzbvZTVXyJRMR8w9HbWx4O_Y@d
 # Pattern Mac Local Development
 # https://git.bethelservice.org/ux/pattern#mac-users---local-development
 export NODE_ICU_DATA=/Users/marty/.nvm/versions/node/v20.9.0/bin/full-icu
+
+# Change the suggestion color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+
+# Configure autocomplete behavior
+zstyle ':autocomplete:*' min-input 1
