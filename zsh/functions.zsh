@@ -232,7 +232,7 @@ cleanup_node_modules() {
 # Run Raycast Git Commit Message command with the diff of the current branch
 function gca() {
     git add .;
-    git diff | pbcopy;
+    git diff --staged | pbcopy;
     open raycast://ai-commands/git-commit-message
 }
 
