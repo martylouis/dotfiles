@@ -39,7 +39,7 @@ source $(brew --prefix)/etc/profile.d/z.sh
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 ## DBngin config
-# export PATH="$PATH:/Users/Shared/DBngin/mysql/5.7.23/bin"
+export PATH="$PATH:/Users/Shared/DBngin/mysql/8.0.33/bin"
 # export MYSQL_UNIX_PORT=/tmp/mysql_3306.sock
 
 ## NVM ##
@@ -72,3 +72,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 # Configure autocomplete behavior
 zstyle ':autocomplete:*' min-input 1
+
+# Local WP executable path
+# export PATH_TO_LOCAL_WP_PHP="/Users/marty/Library/Application Support/Local/lightning-services/php-8.1.23+0/bin/darwin-arm64/ghostscript/bin"
+
+# Add Local WP bin to PATH
+# export PATH="$PATH:/Users/marty/Library/Application Support/Local/lightning-services/php-8.1.23+0/bin/darwin-arm64/ghostscript/bin/php"
