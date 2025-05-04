@@ -23,6 +23,11 @@ then
   source $HOME/.env
 fi
 
+## Read the .zshenv file if it exists
+if [[ -f $HOME/.zshenv ]]; then
+  source $HOME/.zshenv
+fi
+
 # Homebrew ##
 # Add Homebrew sbin to $PATH
 export PATH="/usr/local/sbin:$PATH"
