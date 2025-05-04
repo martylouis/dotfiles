@@ -233,17 +233,17 @@ cleanup_node_modules() {
 function gca() {
     git add .;
     git diff --staged | pbcopy;
-    open raycast://ai-commands/git-commit-message
+    open raycast://ai-commands/git-simple-commit-message
 }
 
 function gcs() {
     git diff --staged | pbcopy;
-    open raycast://ai-commands/git-commit-message
+    open raycast://ai-commands/git-simple-commit-message
 }
 
 function gcm() {
     git diff --staged | pbcopy;
-    open raycast://ai-commands/short-git-commit-message
+    open raycast://ai-commands/git-conventional-commit-message
 }
 
 
