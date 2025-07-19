@@ -230,18 +230,23 @@ cleanup_node_modules() {
 
 
 # Run Raycast Git Commit Message command with the diff of the current branch
-function gca() {
-    git add .;
-    git diff --staged | pbcopy;
-    open raycast://ai-commands/git-simple-commit-message
-}
-
 function gcs() {
     git diff --staged | pbcopy;
-    open raycast://ai-commands/git-simple-commit-message
+    open raycast://ai-commands/git-short-commit-message
+}
+function gcsa() {
+    git add .;
+    git diff --staged | pbcopy;
+    open raycast://ai-commands/git-short-commit-message
 }
 
 function gcm() {
+    git diff --staged | pbcopy;
+    open raycast://ai-commands/git-conventional-commit-message
+}
+
+function gcma() {
+    git add .;
     git diff --staged | pbcopy;
     open raycast://ai-commands/git-conventional-commit-message
 }
