@@ -82,6 +82,16 @@ function vsr() {
 	code $(git rev-parse --show-toplevel);
 }
 
+# `cs` with no arguments opens the current directory in Cursor, otherwise
+# opens the given location
+function cs() {
+	if [ $# -eq 0 ]; then
+		cursor .;
+	else
+		cursor "$@";
+	fi;
+}
+
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
