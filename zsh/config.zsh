@@ -83,3 +83,6 @@ zstyle ':autocomplete:*' min-input 1
 
 # Add Local WP bin to PATH
 # export PATH="$PATH:/Users/marty/Library/Application Support/Local/lightning-services/php-8.1.23+0/bin/darwin-arm64/ghostscript/bin/php"
+
+# Cursor CLI
+export PATH="$HOME/.local/bin:$PATH"
